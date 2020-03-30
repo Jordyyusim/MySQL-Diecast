@@ -1,0 +1,16 @@
+use retrowheels;
+
+1.1
+select count(customerName) as Customers, count(distinct city) as Cities, count(distinct country) as Countries from Customers;
+
+# Soal 1.2
+select count(distinct employees.employeeNumber) as Employee, count(distinct employees.officeCode) as Offices, count(distinct offices.country) as Country, count(distinct products.productCode) as Products, sum(distinct products.quantityInStock) as StockProducts, count(distinct productVendor) as Vendors from employees, offices, products;
+
+# Soal 1.3
+select productLine, min(buyPrice) as minPrice, max(buyPrice) as maxPrice from products group by productLine;
+
+# Soal 1.4
+select customerName, city , country, sum(amount) as total from customers, payments where customers.customerNumber = payments.customerNumber
+group by customers.customerNumber
+order by total desc
+limit 10
